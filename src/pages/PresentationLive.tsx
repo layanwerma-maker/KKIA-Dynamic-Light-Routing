@@ -107,7 +107,7 @@ export default function PresentationLive() {
       </div>
 
       <div className="border-t border-white/10 px-6 py-3 text-center text-[11px] text-slate-500">
-        {t('disclaimerFull.operational')}
+        <strong className="font-semibold text-slate-400">{t('disclaimerBar.label')}</strong> {t('disclaimerBar.text')}
       </div>
     </div>
   )

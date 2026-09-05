@@ -2,7 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/branding/favicon.svg" />
+    <!--
+      Single Page Apps for GitHub Pages
+      https://github.com/rafgraph/spa-github-pages
+      Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
+      Decodes the redirect 404.html sent us (see public/404.html) back into a
+      real history entry, before the app mounts and the router reads location.
+    -->
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%branding/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Dynamic Light Routing System — a conceptual passenger-flow guidance prototype for King Khalid International Airport (KKIA), Riyadh Airports." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

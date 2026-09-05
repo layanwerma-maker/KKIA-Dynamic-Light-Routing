@@ -24,11 +24,12 @@ innovation concept for **Riyadh Airports** (مطارات الرياض).
 7. [Technology Stack](#technology-stack)
 8. [Project Structure](#project-structure)
 9. [Install, Run & Build](#install-run--build)
-10. [Replacing the Branding Placeholder](#replacing-the-branding-placeholder)
-11. [Recording / Exporting the Presentation Sequence](#recording--exporting-the-presentation-sequence)
-12. [Research & References](#research--references)
-13. [Operational Disclaimer](#operational-disclaimer)
-14. [Simulation Disclaimer](#simulation-disclaimer)
+10. [Deployment (GitHub Pages)](#deployment-github-pages)
+11. [Replacing the Branding Placeholder](#replacing-the-branding-placeholder)
+12. [Recording / Exporting the Presentation Sequence](#recording--exporting-the-presentation-sequence)
+13. [Research & References](#research--references)
+14. [Operational Disclaimer](#operational-disclaimer)
+15. [Simulation Disclaimer](#simulation-disclaimer)
 
 ---
 
@@ -211,6 +212,37 @@ npm run dev       # start the dev server (http://localhost:5173)
 npm run build     # type-check (tsc -b) and produce a production build in dist/
 npm run preview   # preview the production build locally
 ```
+
+## Deployment (GitHub Pages)
+
+The app deploys automatically to **GitHub Pages** from the `main` branch via
+GitHub Actions.
+
+- **Workflow:** [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml)
+  — on every push to `main` (or manually via "Run workflow"), it runs
+  `npm ci`, `npm run build`, then publishes `dist/` using the official
+  `actions/upload-pages-artifact` + `actions/deploy-pages` actions.
+- **Base path:** `vite.config.ts` sets `base: '/KKIA-Dynamic-Light-Routing/'` so
+  every built asset URL, and the in-app router (`basename={import.meta.env.BASE_URL}`
+  in `src/main.tsx`), correctly resolve under that repository subpath. The one
+  runtime image reference outside `index.html` (`BrandMark.tsx`'s logo `<img>`)
+  is built from `import.meta.env.BASE_URL` rather than a hardcoded `/` path, for
+  the same reason — any future `public/` asset referenced from application code
+  should follow the same pattern instead of a bare `/...` path.
+- **Client-side routing on Pages:** GitHub Pages has no server-side rewrite
+  rules, so a hard reload or direct link to a deep route (e.g.
+  `/KKIA-Dynamic-Light-Routing/security`) would 404 on a plain static host.
+  This is solved with the standard
+  [SPA-GitHub-Pages](https://github.com/rafgraph/spa-github-pages) redirect
+  trick: `public/404.html` re-encodes the requested path into a query string
+  and redirects to the app; an inline script in `index.html`'s `<head>`
+  decodes it back into a real URL via `history.replaceState` before the router
+  reads the location. `public/.nojekyll` disables GitHub's Jekyll processing
+  so all files (including `_`-prefixed build output, if any) are served as-is.
+  This was verified end-to-end against a local static-file server that
+  reproduces GitHub Pages' exact behavior (serving `404.html` for any
+  unmatched path) — including a hard reload on a deep route and a
+  same-session client-side navigation, both landing on the correct page.
 
 ## Replacing the Branding Placeholder
 

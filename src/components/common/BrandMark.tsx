@@ -17,7 +17,11 @@ export default function BrandMark({ size = 'md', showAirport = true, className =
   const s = SIZE_MAP[size]
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <img src="/branding/riyadh-airports-logo.svg" alt="Riyadh Airports" className={`${s.logo} w-auto shrink-0`} />
+      <img
+        src={`${import.meta.env.BASE_URL}branding/riyadh-airports-logo.svg`}
+        alt="Riyadh Airports"
+        className={`${s.logo} w-auto shrink-0`}
+      />
       {showAirport && (
         <div className="min-w-0 border-s border-white/10 ps-3">
           <p className={`${s.title} font-semibold leading-tight text-slate-100`}>

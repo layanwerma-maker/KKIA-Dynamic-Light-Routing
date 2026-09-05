@@ -30,6 +30,12 @@ export default function OverviewPage() {
         }
       />
 
+      <p className="-mt-4 mb-6 text-xs text-slate-500">
+        <span className="font-medium text-slate-400">{t('credit.heroLabel')}</span>
+        <span className="mx-1.5 text-slate-600">·</span>
+        {t('credit.heroRole')}
+      </p>
+
       <div className="mb-2 flex justify-end">
         <SimBadge />
       </div>

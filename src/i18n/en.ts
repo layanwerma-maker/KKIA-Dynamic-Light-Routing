@@ -888,6 +888,11 @@ const en = {
     kpi10: 'Passenger response to guidance',
     purpose: 'The purpose is to determine whether Light, Audio, or Light + Audio provides the best operational result.',
   },
+  credit: {
+    heroLabel: 'Proposed & Developed by: Layan Alshammari',
+    heroRole: 'Terminal Operations – Riyadh Airports',
+    footer: 'Project Owner / Proposal Developer: Layan Alshammari',
+  },
 }
 
 export default en

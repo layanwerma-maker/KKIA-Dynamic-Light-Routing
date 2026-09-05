@@ -1,4 +1,4 @@
-import { CheckCircle2, ShieldCheck, Luggage, Waypoints, DoorOpen, MapPinned, ClipboardList } from 'lucide-react'
+import { CheckCircle2, ShieldCheck, Luggage, Waypoints, DoorOpen, MapPinned, ClipboardList, Activity, Lightbulb, Volume2, Layers, Target } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
 import SectionHeader from '../components/common/SectionHeader'
 
@@ -13,6 +13,15 @@ const AREAS = [
 ]
 
 const REQUIREMENT_ITEMS = Array.from({ length: 12 }, (_, i) => `pilotRequirements.item${i + 1}`)
+
+const COMBINED_MODES = [
+  { icon: Activity, titleKey: 'combinedPilot.mode1Title', bodyKey: 'combinedPilot.mode1Body' },
+  { icon: Lightbulb, titleKey: 'combinedPilot.mode2Title', bodyKey: 'combinedPilot.mode2Body' },
+  { icon: Volume2, titleKey: 'combinedPilot.mode3Title', bodyKey: 'combinedPilot.mode3Body' },
+  { icon: Layers, titleKey: 'combinedPilot.mode4Title', bodyKey: 'combinedPilot.mode4Body' },
+]
+
+const COMBINED_KPIS = Array.from({ length: 10 }, (_, i) => `combinedPilot.kpi${i + 1}`)
 
 export default function PilotPage() {
   const { t } = useLang()
@@ -60,6 +69,35 @@ export default function PilotPage() {
             </li>
           ))}
         </ul>
+      </div>
+
+      <div className="mt-8 panel p-4">
+        <h2 className="mb-1 text-sm font-semibold text-slate-200">{t('combinedPilot.title')}</h2>
+        <p className="mb-4 text-xs text-slate-500">{t('combinedPilot.subtitle')}</p>
+
+        <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {COMBINED_MODES.map((mode) => (
+            <div key={mode.titleKey} className="rounded-xl border border-teal-500/25 bg-teal-500/5 p-4">
+              <mode.icon size={20} className="mb-2 text-teal-400" />
+              <p className="mb-1 text-sm font-semibold text-slate-200">{t(mode.titleKey)}</p>
+              <p className="text-xs text-slate-400">{t(mode.bodyKey)}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">{t('combinedPilot.kpisTitle')}</h3>
+        <ul className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {COMBINED_KPIS.map((key) => (
+            <li key={key} className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-300">
+              {t(key)}
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-start gap-2 rounded-lg border border-status-guidance/30 bg-status-guidance/5 px-3 py-2 text-xs text-status-guidance">
+          <Target size={14} className="mt-0.5 shrink-0" />
+          <p>{t('combinedPilot.purpose')}</p>
+        </div>
       </div>
     </div>
   )

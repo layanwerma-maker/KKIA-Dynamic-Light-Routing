@@ -10,6 +10,7 @@ import DecisionPage from './pages/DecisionPage'
 import SensorsPage from './pages/SensorsPage'
 import RouteControlPage from './pages/RouteControlPage'
 import ArchitecturePage from './pages/ArchitecturePage'
+import AcousticGuidancePage from './pages/AcousticGuidancePage'
 import PilotPage from './pages/PilotPage'
 import KpisPage from './pages/KpisPage'
 import PresentationPage from './pages/PresentationPage'
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/sensors" element={<SensorsPage />} />
         <Route path="/route-control" element={<RouteControlPage />} />
         <Route path="/architecture" element={<ArchitecturePage />} />
+        <Route path="/acoustic-guidance" element={<AcousticGuidancePage />} />
         <Route path="/pilot" element={<PilotPage />} />
         <Route path="/kpis" element={<KpisPage />} />
         <Route path="/presentation" element={<PresentationPage />} />

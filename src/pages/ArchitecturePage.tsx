@@ -28,6 +28,7 @@ import { useLang } from '../i18n/LanguageContext'
 import SectionHeader from '../components/common/SectionHeader'
 import SimBadge from '../components/common/SimBadge'
 import FlowRow from '../components/common/FlowRow'
+import HardwareCard from '../components/common/HardwareCard'
 
 const HARDWARE_CARDS = [
   {
@@ -205,26 +206,7 @@ export default function ArchitecturePage() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {HARDWARE_CARDS.map((card) => (
-            <div key={card.titleKey} className="panel flex flex-col gap-2 p-4">
-              <card.icon size={20} className="text-teal-400" />
-              <h3 className="text-sm font-semibold text-slate-200">{t(card.titleKey)}</h3>
-              <p className="text-xs leading-relaxed text-slate-400">{t(card.doesKey)}</p>
-              {card.noteKey && (
-                <p className="rounded-md border border-teal-500/20 bg-teal-500/5 px-2 py-1 text-[11px] font-medium text-teal-300">
-                  {t(card.noteKey)}
-                </p>
-              )}
-              <div className="mt-1 space-y-1 border-t border-white/10 pt-2 text-[11px]">
-                <p>
-                  <span className="font-semibold text-slate-500">{t('techArch.fieldInstalled')}: </span>
-                  <span className="text-slate-400">{t(card.installedKey)}</span>
-                </p>
-                <p>
-                  <span className="font-semibold text-slate-500">{t('techArch.fieldConnects')}: </span>
-                  <span className="text-slate-400">{t(card.connectsKey)}</span>
-                </p>
-              </div>
-            </div>
+            <HardwareCard key={card.titleKey} card={card} />
           ))}
         </div>
       </div>

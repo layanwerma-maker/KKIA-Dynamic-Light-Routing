@@ -1,0 +1,14 @@
+<svg width="320" height="64" viewBox="0 0 320 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Riyadh Airports placeholder wordmark">
+  <!--
+    PLACEHOLDER BRAND MARK — NOT AN OFFICIAL LOGO.
+    Replace this file with the authorized Riyadh Airports logo SVG/PNG asset.
+    The <BrandMark /> component reads this exact path, so dropping in the
+    real file (same filename) updates every screen automatically.
+    See README.md > "Replacing the Branding Placeholder".
+  -->
+  <rect x="0" y="8" width="48" height="48" rx="10" fill="none" stroke="#2bc4b3" stroke-width="2.5"/>
+  <path d="M14 40 L24 20 L34 40" stroke="#2bc4b3" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="44" x2="38" y2="44" stroke="#2bc4b3" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="60" y="28" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#f5f7fa">Riyadh Airports</text>
+  <text x="60" y="47" font-family="Tajawal, sans-serif" font-size="14" font-weight="500" fill="#9db3c9">مطارات الرياض</text>
+</svg>

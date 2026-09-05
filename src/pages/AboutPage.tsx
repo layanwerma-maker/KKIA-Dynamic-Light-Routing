@@ -8,8 +8,6 @@ import {
   Sparkles,
   MonitorPlay,
   LayoutDashboard,
-  AlertTriangle,
-  ShieldAlert,
   CheckCircle2,
   FlaskConical,
   Gauge,
@@ -239,10 +237,6 @@ export default function AboutPage() {
       <div className="mb-6 panel p-4">
         <h2 className="mb-3 text-sm font-semibold text-slate-200">{t('howWorks.title')}</h2>
         <FlowRow items={HOW_WORKS_STEPS} />
-        <div className="mt-4 flex items-start gap-2 rounded-lg border border-status-elevated/30 bg-status-elevated/10 px-3 py-2 text-xs text-status-elevated">
-          <AlertTriangle size={14} className="mt-0.5 shrink-0" />
-          <p>{t('howWorks.safetyNote')}</p>
-        </div>
       </div>
 
       {/* Operational Scenarios */}
@@ -264,10 +258,6 @@ export default function AboutPage() {
         <div className="panel p-4">
           <h2 className="mb-3 text-sm font-semibold text-slate-200">{t('scenarios.arrivalsTitle')}</h2>
           <p className="mb-3 text-sm text-slate-400">{t('scenarios.arrivalsBody')}</p>
-          <div className="flex items-start gap-2 rounded-lg border border-status-high/30 bg-status-high/10 px-3 py-2 text-xs text-status-high">
-            <ShieldAlert size={14} className="mt-0.5 shrink-0" />
-            <p>{t('scenarios.arrivalsSafetyNote')}</p>
-          </div>
         </div>
       </div>
 

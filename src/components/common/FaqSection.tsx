@@ -4,9 +4,11 @@ import { useLang } from '../../i18n/LanguageContext'
 import Accordion, { type AccordionItem } from './Accordion'
 
 export interface FaqQuestionItem {
-  /** Matches the numeric suffix of faq.q<n> / faq.a<n> translation keys, e.g. "q1". */
+  /** Matches the numeric suffix of <namespace>.q<n> / <namespace>.a<n> translation keys, e.g. "q1". */
   id: string
   category: string
+  /** Short identifier badge shown before the question, e.g. "A1". */
+  label?: string
   extra?: ReactNode
 }
 
@@ -15,7 +17,16 @@ export interface FaqCategoryDef {
   labelKey: string
 }
 
-export default function FaqSection({ items, categories }: { items: FaqQuestionItem[]; categories: FaqCategoryDef[] }) {
+export default function FaqSection({
+  items,
+  categories,
+  namespace = 'faq',
+}: {
+  items: FaqQuestionItem[]
+  categories: FaqCategoryDef[]
+  /** i18n key prefix for questions/answers/UI strings. Defaults to "faq". */
+  namespace?: string
+}) {
   const { t } = useLang()
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [query, setQuery] = useState('')
@@ -25,15 +36,16 @@ export default function FaqSection({ items, categories }: { items: FaqQuestionIt
     return items.filter((item) => {
       if (activeCategory && item.category !== activeCategory) return false
       if (!q) return true
-      const questionText = t(`faq.${item.id}`).toLowerCase()
-      const answerText = t(`faq.a${item.id.slice(1)}`).toLowerCase()
+      const questionText = t(`${namespace}.${item.id}`).toLowerCase()
+      const answerText = t(`${namespace}.a${item.id.slice(1)}`).toLowerCase()
       return questionText.includes(q) || answerText.includes(q)
     })
-  }, [items, activeCategory, query, t])
+  }, [items, activeCategory, query, t, namespace])
 
   const accordionItems: AccordionItem[] = filtered.map((item) => ({
     id: item.id,
-    questionKey: `faq.${item.id}`,
+    questionKey: `${namespace}.${item.id}`,
+    label: item.label,
     extra: item.extra,
   }))
 
@@ -46,7 +58,7 @@ export default function FaqSection({ items, categories }: { items: FaqQuestionIt
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={t('faq.searchPlaceholder')}
+            placeholder={t(`${namespace}.searchPlaceholder`)}
             className="w-full rounded-lg border border-white/15 bg-white/5 py-2 ps-9 pe-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-teal-500/50 focus:outline-none"
           />
         </div>
@@ -59,7 +71,7 @@ export default function FaqSection({ items, categories }: { items: FaqQuestionIt
             activeCategory === null ? 'bg-teal-500 text-navy-950' : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
-          {t('faq.allCategories')}
+          {t(`${namespace}.allCategories`)}
         </button>
         {categories.map((cat) => (
           <button
@@ -76,10 +88,10 @@ export default function FaqSection({ items, categories }: { items: FaqQuestionIt
 
       {accordionItems.length === 0 ? (
         <p className="rounded-lg border border-white/10 bg-white/[0.02] px-4 py-6 text-center text-sm text-slate-500">
-          {t('faq.noResults')}
+          {t(`${namespace}.noResults`)}
         </p>
       ) : (
-        <Accordion items={accordionItems} answerKey={(id) => `faq.a${id.slice(1)}`} />
+        <Accordion items={accordionItems} answerKey={(id) => `${namespace}.a${id.slice(1)}`} />
       )}
     </div>
   )

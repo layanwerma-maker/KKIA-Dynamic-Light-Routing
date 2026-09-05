@@ -19,7 +19,7 @@ import {
   MonitorCog,
   ClipboardCheck,
   Repeat,
-  ShieldAlert,
+  Info,
   Code2,
   Hand,
   ShieldOff,
@@ -235,8 +235,8 @@ export default function ArchitecturePage() {
           </p>
         </div>
 
-        <div className="mt-4 flex items-start gap-2 rounded-lg border border-status-elevated/30 bg-status-elevated/10 px-3 py-2 text-xs text-status-elevated">
-          <ShieldAlert size={14} className="mt-0.5 shrink-0" />
+        <div className="mt-4 flex items-start gap-2 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-slate-400">
+          <Info size={14} className="mt-0.5 shrink-0 text-teal-400" />
           <p>{t('connectionDiagram.frontendNote')}</p>
         </div>
 
@@ -309,13 +309,13 @@ status: active`}
           </div>
           <ul className="mt-4 space-y-1.5 text-xs text-slate-400">
             <li className="flex items-start gap-2">
-              <ShieldAlert size={13} className="mt-0.5 shrink-0 text-status-elevated" /> {t('connectionDiagram.modesNote1')}
+              <Info size={13} className="mt-0.5 shrink-0 text-teal-400" /> {t('connectionDiagram.modesNote1')}
             </li>
             <li className="flex items-start gap-2">
-              <ShieldAlert size={13} className="mt-0.5 shrink-0 text-status-elevated" /> {t('connectionDiagram.modesNote2')}
+              <Info size={13} className="mt-0.5 shrink-0 text-teal-400" /> {t('connectionDiagram.modesNote2')}
             </li>
             <li className="flex items-start gap-2">
-              <ShieldAlert size={13} className="mt-0.5 shrink-0 text-status-high" /> {t('connectionDiagram.modesNote3')}
+              <Info size={13} className="mt-0.5 shrink-0 text-teal-400" /> {t('connectionDiagram.modesNote3')}
             </li>
           </ul>
         </div>

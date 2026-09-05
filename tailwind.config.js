@@ -43,10 +43,15 @@ export default {
           '0%, 100%': { opacity: '0.6' },
           '50%': { opacity: '1' },
         },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(-4px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         flow: 'flow 1.2s linear infinite',
         pulseGlow: 'pulseGlow 2s ease-in-out infinite',
+        fadeIn: 'fadeIn 0.2s ease-out',
       },
     },
   },

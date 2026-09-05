@@ -15,6 +15,7 @@ import {
   Gauge,
   Presentation,
   Info,
+  MessageCircleQuestion,
   X,
 } from 'lucide-react'
 import { useLang } from '../../i18n/LanguageContext'
@@ -36,6 +37,7 @@ const ITEMS = [
   { to: '/kpis', icon: Gauge, key: 'nav.kpis' },
   { to: '/presentation', icon: Presentation, key: 'nav.presentation' },
   { to: '/about', icon: Info, key: 'nav.about' },
+  { to: '/faq', icon: MessageCircleQuestion, key: 'nav.faqPage' },
 ]
 
 export default function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {

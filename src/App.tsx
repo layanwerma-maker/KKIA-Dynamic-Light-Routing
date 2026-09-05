@@ -16,6 +16,7 @@ import KpisPage from './pages/KpisPage'
 import PresentationPage from './pages/PresentationPage'
 import PresentationLive from './pages/PresentationLive'
 import AboutPage from './pages/AboutPage'
+import FaqPage from './pages/FaqPage'
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/kpis" element={<KpisPage />} />
         <Route path="/presentation" element={<PresentationPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/faq" element={<FaqPage />} />
         <Route path="*" element={<OverviewPage />} />
       </Route>
     </Routes>

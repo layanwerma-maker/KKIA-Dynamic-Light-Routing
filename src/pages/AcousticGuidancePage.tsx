@@ -14,8 +14,8 @@ import {
   BrainCircuit,
   ClipboardCheck,
   LayoutDashboard,
-  ShieldAlert,
-  AlertTriangle,
+  Info,
+  Target,
   Ear,
   Moon,
   MessageSquare,
@@ -66,8 +66,11 @@ export default function AcousticGuidancePage() {
         <p className="text-sm text-slate-400">{t('acoustic.intro2')}</p>
         <p className="text-sm text-slate-400">{t('acoustic.intro3')}</p>
         <div className="flex items-start gap-2 rounded-lg border border-teal-500/25 bg-teal-500/5 px-3 py-2 text-xs text-teal-200">
-          <ShieldAlert size={14} className="mt-0.5 shrink-0" />
-          <p>{t('acoustic.importantNote')}</p>
+          <Target size={14} className="mt-0.5 shrink-0" />
+          <div>
+            <p className="mb-0.5 font-semibold">{t('acoustic.targetedZoneTitle')}</p>
+            <p>{t('acoustic.importantNote')}</p>
+          </div>
         </div>
       </div>
 
@@ -161,11 +164,11 @@ export default function AcousticGuidancePage() {
           </span>
         </div>
 
-        <div className="mb-3 rounded-lg border border-status-elevated/30 bg-status-elevated/10 px-3 py-2 text-xs text-status-elevated">
-          <p className="font-mono">
+        <div className="mb-3 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-slate-400">
+          <p className="font-mono text-slate-300">
             {t('acoustic.exampleAmbient')} → {t('acoustic.exampleTarget')}
           </p>
-          <p className="mt-1 font-semibold">{t('acoustic.exampleLabel')}</p>
+          <p className="mt-1">{t('acoustic.exampleLabel')}</p>
         </div>
 
         <p className="text-xs text-slate-500">{t('acoustic.dynamicAdjustNote')}</p>
@@ -341,8 +344,8 @@ export default function AcousticGuidancePage() {
           </div>
         </div>
 
-        <div className="mt-4 flex items-start gap-2 rounded-lg border border-status-elevated/30 bg-status-elevated/10 px-3 py-2 text-xs text-status-elevated">
-          <ShieldAlert size={14} className="mt-0.5 shrink-0" />
+        <div className="mt-4 flex items-start gap-2 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-slate-400">
+          <Info size={14} className="mt-0.5 shrink-0 text-teal-400" />
           <p>{t('connectionDiagram.frontendNote')}</p>
         </div>
       </div>
@@ -363,8 +366,8 @@ export default function AcousticGuidancePage() {
           ))}
         </ul>
         <p className="mb-3 text-sm text-slate-400">{t('acoustic.silentBody2')}</p>
-        <div className="flex items-start gap-2 rounded-lg border border-status-elevated/30 bg-status-elevated/10 px-3 py-2 text-xs text-status-elevated">
-          <AlertTriangle size={14} className="mt-0.5 shrink-0" />
+        <div className="flex items-start gap-2 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-slate-400">
+          <Info size={14} className="mt-0.5 shrink-0 text-teal-400" />
           <p>{t('acoustic.silentNote')}</p>
         </div>
       </div>

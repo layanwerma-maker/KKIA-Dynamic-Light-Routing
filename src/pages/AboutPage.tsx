@@ -13,10 +13,13 @@ import {
   CheckCircle2,
   FlaskConical,
   Gauge,
+  HelpCircle,
 } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
 import SectionHeader from '../components/common/SectionHeader'
 import BrandMark from '../components/common/BrandMark'
+import FlowRow from '../components/common/FlowRow'
+import Accordion, { type AccordionItem } from '../components/common/Accordion'
 
 const COMPONENT_CARDS = [
   { icon: Radio, titleKey: 'components.cardATitle', bodyKey: 'components.cardABody' },
@@ -52,26 +55,28 @@ const PILOT_STEPS = ['pilotTrial.step1', 'pilotTrial.step2', 'pilotTrial.step3',
 
 const PILOT_KPIS = ['pilotTrial.kpi1', 'pilotTrial.kpi2', 'pilotTrial.kpi3', 'pilotTrial.kpi4', 'pilotTrial.kpi5', 'pilotTrial.kpi6']
 
-function FlowRow({ steps }: { steps: string[] }) {
-  const { t, dir } = useLang()
-  return (
-    <div className="flex flex-wrap items-center gap-2">
-      {steps.map((key, i) => (
-        <div key={key} className="flex items-center gap-2">
-          <div className="flex items-center gap-2 rounded-full border border-teal-500/25 bg-teal-500/5 px-3 py-1.5 text-xs font-semibold text-teal-200 sm:text-sm">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-500/20 text-[10px] text-teal-300">
-              {i + 1}
-            </span>
-            {t(key)}
-          </div>
-          {i < steps.length - 1 && (
-            <ArrowRight size={14} className={`shrink-0 text-slate-600 ${dir === 'rtl' ? 'rotate-180' : ''}`} />
-          )}
-        </div>
-      ))}
-    </div>
-  )
-}
+const FAQ_ITEMS: AccordionItem[] = [
+  { id: 'q1', questionKey: 'faq.q1' },
+  { id: 'q2', questionKey: 'faq.q2' },
+  {
+    id: 'q3',
+    questionKey: 'faq.q3',
+    extra: (
+      <div className="mt-3">
+        <FlowRow items={['Dashboard', 'Backend/API', 'PLC/Gateway', 'LED Controller', 'LED']} raw />
+      </div>
+    ),
+  },
+  { id: 'q4', questionKey: 'faq.q4' },
+  { id: 'q5', questionKey: 'faq.q5' },
+  { id: 'q6', questionKey: 'faq.q6' },
+  { id: 'q7', questionKey: 'faq.q7' },
+  { id: 'q8', questionKey: 'faq.q8' },
+  { id: 'q9', questionKey: 'faq.q9' },
+  { id: 'q10', questionKey: 'faq.q10' },
+  { id: 'q11', questionKey: 'faq.q11' },
+  { id: 'q12', questionKey: 'faq.q12' },
+]
 
 export default function AboutPage() {
   const { t } = useLang()
@@ -149,7 +154,7 @@ export default function AboutPage() {
       {/* How the System Works */}
       <div className="mb-6 panel p-4">
         <h2 className="mb-3 text-sm font-semibold text-slate-200">{t('howWorks.title')}</h2>
-        <FlowRow steps={HOW_WORKS_STEPS} />
+        <FlowRow items={HOW_WORKS_STEPS} />
         <div className="mt-4 flex items-start gap-2 rounded-lg border border-status-elevated/30 bg-status-elevated/10 px-3 py-2 text-xs text-status-elevated">
           <AlertTriangle size={14} className="mt-0.5 shrink-0" />
           <p>{t('howWorks.safetyNote')}</p>
@@ -200,7 +205,7 @@ export default function AboutPage() {
         <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-200">
           <FlaskConical size={16} className="text-teal-400" /> {t('pilotTrial.title')}
         </h2>
-        <FlowRow steps={PILOT_STEPS} />
+        <FlowRow items={PILOT_STEPS} />
         <h3 className="mb-2 mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
           <Gauge size={14} /> {t('pilotTrial.kpisTitle')}
         </h3>
@@ -214,6 +219,18 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Expected Questions / FAQ */}
+      <div className="mb-6">
+        <h2 className="mb-1 flex items-center gap-2 text-sm font-semibold text-slate-200">
+          <HelpCircle size={16} className="text-teal-400" /> {t('faq.title')}
+        </h2>
+        <p className="mb-3 text-xs text-slate-500">{t('faq.subtitle')}</p>
+        <Accordion
+          items={FAQ_ITEMS}
+          answerKey={(id) => `faq.a${id.replace('q', '')}`}
+        />
       </div>
 
       <div className="panel p-4">

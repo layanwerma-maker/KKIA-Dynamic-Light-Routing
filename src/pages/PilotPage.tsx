@@ -1,4 +1,4 @@
-import { CheckCircle2, ShieldCheck, Luggage, Waypoints, DoorOpen, MapPinned } from 'lucide-react'
+import { CheckCircle2, ShieldCheck, Luggage, Waypoints, DoorOpen, MapPinned, ClipboardList } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
 import SectionHeader from '../components/common/SectionHeader'
 
@@ -11,6 +11,8 @@ const AREAS = [
   { icon: DoorOpen, key: 'pilot.areaBoarding' },
   { icon: MapPinned, key: 'pilot.areaIntersections' },
 ]
+
+const REQUIREMENT_ITEMS = Array.from({ length: 12 }, (_, i) => `pilotRequirements.item${i + 1}`)
 
 export default function PilotPage() {
   const { t } = useLang()
@@ -43,6 +45,21 @@ export default function PilotPage() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mt-8 panel p-4">
+        <h2 className="mb-1 flex items-center gap-2 text-sm font-semibold text-slate-200">
+          <ClipboardList size={16} className="text-teal-400" /> {t('pilotRequirements.title')}
+        </h2>
+        <p className="mb-3 text-xs text-slate-500">{t('pilotRequirements.subtitle')}</p>
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          {REQUIREMENT_ITEMS.map((key) => (
+            <li key={key} className="flex items-start gap-2 text-sm text-slate-400">
+              <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-status-normal" />
+              {t(key)}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

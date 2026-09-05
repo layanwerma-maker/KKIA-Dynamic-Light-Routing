@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-navy-950 text-slate-100 antialiased;
+  font-feature-settings: 'cv11';
+}
+
+html[lang='ar'] body {
+  font-family: 'Tajawal', 'Inter', system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2c47;
+  border-radius: 8px;
+}
+
+.panel {
+  @apply rounded-2xl border border-white/10 bg-navy-850/70 backdrop-blur-sm;
+}
+
+.badge-normal {
+  @apply text-status-normal bg-status-normal/10 border border-status-normal/30;
+}
+.badge-elevated {
+  @apply text-status-elevated bg-status-elevated/10 border border-status-elevated/30;
+}
+.badge-high {
+  @apply text-status-high bg-status-high/10 border border-status-high/30;
+}
+.badge-guidance {
+  @apply text-status-guidance bg-status-guidance/10 border border-status-guidance/30;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-navy-950 transition hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-40;
+}
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40;
+}
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-1.5 text-sm text-slate-300 transition hover:bg-white/10;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
